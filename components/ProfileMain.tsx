@@ -1,3 +1,5 @@
+import { ProjectsSection } from "@/components/ProjectsSection";
+
 export function ProfileMain() {
   return (
     <div className="space-y-7">
@@ -46,6 +48,8 @@ export function ProfileMain() {
           지향합니다.
         </p>
       </div>
+
+      <ProjectsSection />
 
       <div className="grid grid-cols-2 gap-5 text-xs md:text-sm">
         <div className="rounded-2xl border border-slate-200 bg-slate-50/80 p-5 space-y-2.5 dark:border-white/5 dark:bg-slate-900/50">
