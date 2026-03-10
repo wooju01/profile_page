@@ -13,19 +13,15 @@ const ThemeContext = createContext<{
 } | null>(null);
 
 export function ThemeProvider({ children }: { children: React.ReactNode }) {
-  const [theme, setThemeState] = useState<Theme>("light");
-  const [mounted, setMounted] = useState(false);
+  const [theme, setThemeState] = useState<Theme>(() => {
+    const stored =
+      typeof window === "undefined"
+        ? null
+        : (localStorage.getItem(STORAGE_KEY) as Theme | null);
+    return stored === "dark" ? "dark" : "light";
+  });
 
   useEffect(() => {
-    const stored = localStorage.getItem(STORAGE_KEY) as Theme | null;
-    if (stored === "light" || stored === "dark") {
-      setThemeState(stored);
-    }
-    setMounted(true);
-  }, []);
-
-  useEffect(() => {
-    if (!mounted) return;
     const root = document.documentElement;
     if (theme === "dark") {
       root.classList.add("dark");
@@ -33,7 +29,7 @@ export function ThemeProvider({ children }: { children: React.ReactNode }) {
       root.classList.remove("dark");
     }
     localStorage.setItem(STORAGE_KEY, theme);
-  }, [theme, mounted]);
+  }, [theme]);
 
   const setTheme = useCallback((next: Theme) => {
     setThemeState(next);

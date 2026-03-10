@@ -9,20 +9,20 @@ type Project = {
 
 const PROJECTS: Project[] = [
   {
-    slug: "portfolio",
-    name: "Portfolio Site",
-    short: "개인 포트폴리오와 소개를 담은 웹사이트",
-    tags: ["Next.js", "React", "Tailwind CSS"],
+    slug: "snack",
+    name: "Snack Site",
+    short: "기업의 간식 구매·관리 프로세스를 디지털화해 예산 집행과 자원 운영의 효율성을 높이는 사내 복지 관리 서비스",
+    tags: ["Next.js", "React", "Tailwind CSS", "AWS"],
   },
   {
-    slug: "dashboard",
-    name: "Analytics Dashboard",
-    short: "데이터를 시각화하는 대시보드 인터페이스",
-    tags: ["Charts", "UX", "Performance"],
+    slug: "Mbn마라톤",
+    name: "MBN 거제마라톤 Site",
+    short: "마라톤 대회 참가자의 신청부터 관리자 운영까지 전 과정을 디지털화한 대회 운영 웹 서비스",
+    tags: ["WordPress"],
   },
   {
-    slug: "design-system",
-    name: "Design System",
+    slug: "pandamarket",
+    name: "Pandamarket Site",
     short: "재사용 가능한 UI 컴포넌트와 토큰 설계",
     tags: ["Design System", "Accessibility", "Storybook"],
   },

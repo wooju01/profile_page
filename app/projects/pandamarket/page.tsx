@@ -1,4 +1,4 @@
-// app/projects/portfolio/page.tsx
+// app/projects/pandamarket/page.tsx
 import type { Metadata } from "next";
 import Link from "next/link";
 

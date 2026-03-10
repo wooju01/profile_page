@@ -36,11 +36,10 @@ export function ProfileAside() {
             <span className="text-[11px] text-sky-600 dark:text-sky-200/80">github.com/wooju01</span>
           </a>
           <a
-            href="mailto:example@email.com"
             className="flex items-center justify-between rounded-xl border border-emerald-300 bg-emerald-50 px-3 py-2 text-emerald-800 hover:bg-emerald-100 transition-colors dark:border-emerald-500/40 dark:bg-emerald-500/10 dark:text-emerald-100 dark:hover:bg-emerald-500/20"
           >
             <span>Email</span>
-            <span className="text-[11px] text-emerald-600 dark:text-emerald-200/80">example@email.com</span>
+            <span className="text-[11px] text-emerald-600 dark:text-emerald-200/80">dnwn810@gmail.com</span>
           </a>
         </div>
       </div>
