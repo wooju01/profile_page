@@ -25,15 +25,15 @@ const PROJECTS: Project[] = [
     url: "https://5nack.site",
   },
   {
-    slug: "Mbn마라톤",
-    name: "MBN 거제마라톤 Site",
+    slug: "mbn-marathon",
+    name: "MBN 거제마라톤",
     short: "마라톤 대회 참가자의 신청부터 관리자 운영까지 전 과정을 디지털화한 대회 운영 웹 서비스",
     tags: ["WordPress"],
     url: "https://marathon-mbngj.com/",
   },
   {
     slug: "pandamarket",
-    name: "Pandamarket Site",
+    name: "Pandamarket",
     short: "재사용 가능한 UI 컴포넌트와 토큰 설계",
     tags: ["Design System", "Accessibility", "Storybook"],
   },
