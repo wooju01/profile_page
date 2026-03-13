@@ -36,7 +36,7 @@ export default function MbnMarathonPage() {
             <h1 className="text-xl md:text-2xl font-semibold text-neutral-900 dark:text-neutral-50">
               MBN 거제마라톤
             </h1>
-            <p className="text-sm md:text-base text-neutral-600 dark:text-neutral-300">
+            <p className="text-[15px] md:text-base text-neutral-600 dark:text-neutral-300">
               마라톤 대회 참가자의 신청부터 관리자 운영까지 전 과정을 디지털화한 대회 운영 웹 서비스입니다.
               관리자용 <strong>신청자 입금 관리 페이지</strong>(페이지네이션·수정/삭제·엑셀 다운로드)를 구현했습니다.
             </p>
@@ -55,7 +55,7 @@ export default function MbnMarathonPage() {
         <section className="space-y-3">
           <h2 className={SECTION_HEADING}>사용 기술 & 선택 이유</h2>
           <div className="rounded-2xl border border-slate-200 bg-white/80 p-5 dark:border-slate-700/80 dark:bg-slate-900/60">
-            <ul className="space-y-3 text-sm text-neutral-700 dark:text-neutral-200">
+            <ul className="space-y-3 text-[15px] text-neutral-700 dark:text-neutral-200">
               <li>
                 <strong>WordPress + Forminator</strong> — 배포 준비 기간이 <strong>1주일</strong>로 짧아
                 처음부터 풀스택으로 개발하기보다, 빠르게 운영 가능한 워드프레스와 신청서 작성 플러그인(Forminator) 기반으로
@@ -77,7 +77,7 @@ export default function MbnMarathonPage() {
         {/* 2. 주요 코드 예시 — 삭제 처리 */}
         <section className="space-y-3">
           <h2 className={SECTION_HEADING}>주요 코드 예시</h2>
-          <p className="text-sm text-neutral-600 dark:text-neutral-300">
+          <p className="text-[15px] text-neutral-600 dark:text-neutral-300">
             신청자 삭제 시 메타를 먼저 지운 뒤 엔트리를 삭제해, 외래키/정합성을 맞춘 부분입니다.
           </p>
           <CodeBlock
@@ -102,23 +102,150 @@ export default function MbnMarathonPage() {
           />
         </section>
 
-        {/* 3. 스크린샷 — 포트폴리오용 이미지 */}
-        <section className="space-y-3">
-          <h2 className={SECTION_HEADING}>스크린샷</h2>
-          <p className="text-sm text-neutral-600 dark:text-neutral-300">
-            관리자 신청자 목록 화면이나 엑셀 다운로드 결과 등을 넣을 수 있는 영역입니다. 이미지는 <code className="rounded bg-slate-100 px-1 dark:bg-slate-800">public/projects/mbn-marathon/</code> 에 넣고 <code className="rounded bg-slate-100 px-1 dark:bg-slate-800">src=&quot;/projects/mbn-marathon/파일명.png&quot;</code> 로 사용하면 됩니다.
+        {/* 3. 신청 폼 UX 개선 코드 예시 */}
+        <section className="space-y-4">
+          <h2 className={SECTION_HEADING}>신청 폼 UX 개선</h2>
+          <p className="text-[15px] text-neutral-600 dark:text-neutral-300">
+            Forminator 기본 폼 UI만으로는 해결되지 않던 문제(스텝 숫자 중복, 주소 잘림, 종목에 따라 다른 기념품 선택)를 CSS와
+            자바스크립트로 커스터마이즈했습니다.
           </p>
-          <PortfolioImage
-            placeholder
-            alt="MBN 마라톤 관리자 화면 예시"
-            caption="예: 신청자 관리 목록 또는 엑셀 다운로드 화면"
+
+          <CodeBlock
+            title="스텝 인디케이터 정리"
+            language="JavaScript"
+            code={`function fixStepIndicators() {
+  var steps = document.querySelectorAll(
+    '.forminator-custom-form .forminator-pagination-steps button,' +
+    '.forminator-custom-form .forminator-pagination-steps .forminator-step'
+  );
+
+  steps.forEach(function (step) {
+    var nextSibling = step.nextSibling;
+    if (nextSibling && nextSibling.nodeType === 3) {
+      var text = nextSibling.textContent.trim();
+      if (/^\\d+$/.test(text)) {
+        nextSibling.remove();
+      }
+    }
+
+    var spans = step.querySelectorAll('span');
+    for (var i = 1; i < spans.length; i++) {
+      spans[i].remove();
+    }
+  });
+}`}
+            why="플러그인 기본 출력에서는 스텝 숫자가 안팎에 두 번 보였습니다. DOM을 한 번 정리해서, 사용자가 한눈에 진행 단계를 이해할 수 있도록 했습니다."
+          />
+
+          <CodeBlock
+            title="기본 정보 필드 읽기 전용 처리"
+            language="JavaScript"
+            code={`var readonlyFields = [
+  'user_login',
+  'user_email',
+  'mobile_number',
+  'birth_date',
+  'gender',
+  'postal_code',
+  'address',
+  'address_detail',
+  'race',
+];\n\nfunction setReadonlyFields() {
+  var allFields = document.querySelectorAll(
+    '.forminator-field input, .forminator-field textarea, .forminator-field select'
+  );
+\n  allFields.forEach(function (field) {
+    var fieldName = field.name || '';
+    var fieldId = field.id || '';
+    var label = '';
+    var fieldContainer = field.closest('.forminator-field');\n
+    if (fieldContainer) {
+      var labelElement = fieldContainer.querySelector('.forminator-label');
+      if (labelElement) label = labelElement.textContent.trim();
+    }\n
+    var shouldBeReadonly = false;
+    readonlyFields.forEach(function (key) {
+      if (fieldName.indexOf(key) !== -1 || fieldId.indexOf(key) !== -1) {
+        shouldBeReadonly = true;
+      }
+    });\n
+    var readonlyLabels = ['이름', '이메일', '전화번호', '생일', '성별', '우편번호', '주소', '상세주소', '종목'];
+    readonlyLabels.forEach(function (labelText) {
+      if (label.indexOf(labelText) !== -1) {
+        shouldBeReadonly = true;
+      }
+    });\n
+    if (shouldBeReadonly) {
+      field.setAttribute('data-readonly-field', 'true');
+      if (field.tagName === 'SELECT' || field.type === 'radio') {
+        field.disabled = true;
+      } else {
+        field.readOnly = true;
+      }
+    }
+  });
+}`}
+            why="로그인/프로필에서 가져온 사용자 정보는 폼에서 수정하지 못하게 막아, 오타나 다른 사람 정보로 신청하는 실수를 줄였습니다."
+          />
+
+          <CodeBlock
+            title="종목에 따라 기념품 라디오 그룹 제어"
+            language="JavaScript"
+            code={`function handleRadioGroups() {
+  var params = new URLSearchParams(window.location.search);
+  var race = (params.get('race') || '').trim().toUpperCase(); // HALF / 10KM / 4KM
+  if (!race) return;\n
+  var sizeGroup = null;
+  var giftGroup = null;
+  var labels = document.querySelectorAll('.forminator-label');\n
+  labels.forEach(function (label) {
+    var txt = label.textContent.trim();
+    var fieldContainer = label.closest('.forminator-field');
+    if (!fieldContainer) return;
+\n    if (txt.indexOf('패키지 종류') !== -1 && txt.indexOf('4km') === -1 && txt.indexOf('4KM') === -1) {
+      sizeGroup = fieldContainer;
+    }\n    if (txt.indexOf('패키지 종류(4km') !== -1 || txt.indexOf('패키지 종류(4KM') !== -1) {
+      giftGroup = fieldContainer;
+    }
+  });\n
+  if (!sizeGroup || !giftGroup) return;\n
+  function setGroupDisabled(groupEl, disabled) {
+    var radios = groupEl.querySelectorAll('input[type=\"radio\"]');
+    groupEl.style.display = disabled ? 'none' : '';
+    radios.forEach(function (r) {
+      r.disabled = disabled;
+      if (disabled) r.checked = false;
+    });
+  }\n
+  if (race === 'HALF' || race === '10KM') {
+    setGroupDisabled(giftGroup, true);
+    setGroupDisabled(sizeGroup, false);
+  } else if (race === '4KM') {
+    setGroupDisabled(sizeGroup, true);
+    setGroupDisabled(giftGroup, false);
+  }
+}`}
+            why="하나의 신청 폼 안에서 HALF/10KM와 4KM가 서로 다른 기념품 그룹을 사용하기 때문에, 잘못된 조합으로 선택할 수 없도록 종목에 맞는 라디오 그룹만 노출했습니다."
           />
         </section>
 
-        {/* 4. 구현 범위 요약 */}
+        {/* 4. 스크린샷 — 포트폴리오용 이미지 */}
+        <section className="space-y-3">
+          <h2 className={SECTION_HEADING}>스크린샷</h2>
+          <p className="text-[15px] text-neutral-600 dark:text-neutral-300">
+            아래 이미지는 실제 운영과 동일한 스타일로 구성한 신청 폼 데모 페이지의 스크린샷입니다.
+          </p>
+          <PortfolioImage
+            src="/images/%20application.png"
+            alt="MBN 마라톤 신청 폼 데모 화면"
+            caption="로그인 사용자 정보가 자동 채워진 신청 폼과 패키지 선택 UI"
+          />
+        </section>
+
+        {/* 5. 구현 범위 요약 */}
         <section className="space-y-3">
           <h2 className={SECTION_HEADING}>구현 범위 요약</h2>
-          <ul className="list-disc space-y-1 pl-5 text-sm text-neutral-700 dark:text-neutral-200">
+          <ul className="list-disc space-y-1 pl-5 text-[15px] text-neutral-700 dark:text-neutral-200">
             <li>신청자 관리 메뉴 — 페이지네이션(50명/페이지), 필터(이름·단체·전화·생년월일·종목·입금상태)</li>
             <li>신청자 정보 수정 (참가 종목, 기념품, 응급연락처, 입금상태, 입금자명, 관리자 메모)</li>
             <li>빠른 입금 상태 변경 (미입금 → 입금완료)</li>
@@ -127,7 +254,7 @@ export default function MbnMarathonPage() {
           </ul>
         </section>
 
-        {/* 5. 사이트 링크 */}
+        {/* 6. 사이트 링크 */}
         <section className="space-y-2">
           <h2 className={SECTION_HEADING}>관련 링크</h2>
           <Link
