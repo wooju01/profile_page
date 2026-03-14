@@ -102,18 +102,30 @@ export default function MbnMarathonPage() {
           />
         </section>
 
-        {/* 3. 신청 폼 UX 개선 코드 예시 */}
+        {/* 3. 신청 폼 UX 개선 */}
         <section className="space-y-4">
           <h2 className={SECTION_HEADING}>신청 폼 UX 개선</h2>
-          <p className="text-[15px] text-neutral-600 dark:text-neutral-300">
-            Forminator 기본 폼 UI만으로는 해결되지 않던 문제(스텝 숫자 중복, 주소 잘림, 종목에 따라 다른 기념품 선택)를 CSS와
-            자바스크립트로 커스터마이즈했습니다.
-          </p>
+          <div className="grid gap-6 md:grid-cols-2 items-start">
+            <div className="space-y-3">
+              <p className="text-[15px] text-neutral-600 dark:text-neutral-300">
+                로그인 정보가 자동 채워지는 신청 폼에서, 스텝 표시·읽기 전용 필드·종목별 기념품 선택을 자바스크립트로 제어했습니다.
+              </p>
+              <p className="text-[13px] text-neutral-500 dark:text-neutral-400">
+                오른쪽 스크린샷은 실제 운영과 동일한 스타일로 구성한 신청 폼 데모 화면입니다.
+              </p>
+            </div>
+            <PortfolioImage
+              src="/images/%20application.png"
+              alt="MBN 마라톤 신청 폼 데모 화면"
+              caption="실제 운영과 동일한 스타일로 구성한 신청 폼 데모 화면"
+            />
+          </div>
 
-          <CodeBlock
-            title="스텝 인디케이터 정리"
-            language="JavaScript"
-            code={`function fixStepIndicators() {
+          <div className="space-y-4">
+            <CodeBlock
+              title="스텝 인디케이터 정리"
+              language="JavaScript"
+              code={`function fixStepIndicators() {
   var steps = document.querySelectorAll(
     '.forminator-custom-form .forminator-pagination-steps button,' +
     '.forminator-custom-form .forminator-pagination-steps .forminator-step'
@@ -134,112 +146,43 @@ export default function MbnMarathonPage() {
     }
   });
 }`}
-            why="플러그인 기본 출력에서는 스텝 숫자가 안팎에 두 번 보였습니다. DOM을 한 번 정리해서, 사용자가 한눈에 진행 단계를 이해할 수 있도록 했습니다."
-          />
+              why="스텝 숫자가 두 번 보이던 문제를 DOM 정리로 해결했습니다."
+            />
 
-          <CodeBlock
-            title="기본 정보 필드 읽기 전용 처리"
-            language="JavaScript"
-            code={`var readonlyFields = [
-  'user_login',
-  'user_email',
-  'mobile_number',
-  'birth_date',
-  'gender',
-  'postal_code',
-  'address',
-  'address_detail',
-  'race',
-];\n\nfunction setReadonlyFields() {
+            <CodeBlock
+              title="기본 정보 필드 읽기 전용"
+              language="JavaScript"
+              code={`var readonlyFields = ['user_login','user_email','mobile_number','birth_date','gender'];\n\nfunction setReadonlyFields() {
   var allFields = document.querySelectorAll(
     '.forminator-field input, .forminator-field textarea, .forminator-field select'
   );
-\n  allFields.forEach(function (field) {
-    var fieldName = field.name || '';
-    var fieldId = field.id || '';
-    var label = '';
-    var fieldContainer = field.closest('.forminator-field');\n
-    if (fieldContainer) {
-      var labelElement = fieldContainer.querySelector('.forminator-label');
-      if (labelElement) label = labelElement.textContent.trim();
-    }\n
-    var shouldBeReadonly = false;
+
+  allFields.forEach(function (field) {
+    var name = field.name || '';
     readonlyFields.forEach(function (key) {
-      if (fieldName.indexOf(key) !== -1 || fieldId.indexOf(key) !== -1) {
-        shouldBeReadonly = true;
-      }
-    });\n
-    var readonlyLabels = ['이름', '이메일', '전화번호', '생일', '성별', '우편번호', '주소', '상세주소', '종목'];
-    readonlyLabels.forEach(function (labelText) {
-      if (label.indexOf(labelText) !== -1) {
-        shouldBeReadonly = true;
-      }
-    });\n
-    if (shouldBeReadonly) {
-      field.setAttribute('data-readonly-field', 'true');
-      if (field.tagName === 'SELECT' || field.type === 'radio') {
-        field.disabled = true;
-      } else {
+      if (name.indexOf(key) !== -1) {
+        field.setAttribute('data-readonly-field', 'true');
         field.readOnly = true;
       }
-    }
+    });
   });
 }`}
-            why="로그인/프로필에서 가져온 사용자 정보는 폼에서 수정하지 못하게 막아, 오타나 다른 사람 정보로 신청하는 실수를 줄였습니다."
-          />
+              why="로그인 정보 기반 필드를 수정 못 하게 막아 데이터 정합성을 지켰습니다."
+            />
 
-          <CodeBlock
-            title="종목에 따라 기념품 라디오 그룹 제어"
-            language="JavaScript"
-            code={`function handleRadioGroups() {
+            <CodeBlock
+              title="종목별 기념품 라디오 제어"
+              language="JavaScript"
+              code={`function handleRadioGroups() {
   var params = new URLSearchParams(window.location.search);
-  var race = (params.get('race') || '').trim().toUpperCase(); // HALF / 10KM / 4KM
-  if (!race) return;\n
-  var sizeGroup = null;
-  var giftGroup = null;
-  var labels = document.querySelectorAll('.forminator-label');\n
-  labels.forEach(function (label) {
-    var txt = label.textContent.trim();
-    var fieldContainer = label.closest('.forminator-field');
-    if (!fieldContainer) return;
-\n    if (txt.indexOf('패키지 종류') !== -1 && txt.indexOf('4km') === -1 && txt.indexOf('4KM') === -1) {
-      sizeGroup = fieldContainer;
-    }\n    if (txt.indexOf('패키지 종류(4km') !== -1 || txt.indexOf('패키지 종류(4KM') !== -1) {
-      giftGroup = fieldContainer;
-    }
-  });\n
-  if (!sizeGroup || !giftGroup) return;\n
-  function setGroupDisabled(groupEl, disabled) {
-    var radios = groupEl.querySelectorAll('input[type=\"radio\"]');
-    groupEl.style.display = disabled ? 'none' : '';
-    radios.forEach(function (r) {
-      r.disabled = disabled;
-      if (disabled) r.checked = false;
-    });
-  }\n
-  if (race === 'HALF' || race === '10KM') {
-    setGroupDisabled(giftGroup, true);
-    setGroupDisabled(sizeGroup, false);
-  } else if (race === '4KM') {
-    setGroupDisabled(sizeGroup, true);
-    setGroupDisabled(giftGroup, false);
-  }
-}`}
-            why="하나의 신청 폼 안에서 HALF/10KM와 4KM가 서로 다른 기념품 그룹을 사용하기 때문에, 잘못된 조합으로 선택할 수 없도록 종목에 맞는 라디오 그룹만 노출했습니다."
-          />
-        </section>
+  var race = (params.get('race') || '').trim().toUpperCase();
+  if (!race) return;
 
-        {/* 4. 스크린샷 — 포트폴리오용 이미지 */}
-        <section className="space-y-3">
-          <h2 className={SECTION_HEADING}>스크린샷</h2>
-          <p className="text-[15px] text-neutral-600 dark:text-neutral-300">
-            아래 이미지는 실제 운영과 동일한 스타일로 구성한 신청 폼 데모 페이지의 스크린샷입니다.
-          </p>
-          <PortfolioImage
-            src="/images/%20application.png"
-            alt="MBN 마라톤 신청 폼 데모 화면"
-            caption="로그인 사용자 정보가 자동 채워진 신청 폼과 패키지 선택 UI"
-          />
+  // HALF/10KM일 때 4km용 그룹 숨기기 등의 처리...
+}`}
+              why="종목에 맞지 않는 기념품을 선택하지 못하도록 잘못된 라디오 그룹은 숨겼습니다."
+            />
+          </div>
         </section>
 
         {/* 5. 구현 범위 요약 */}
