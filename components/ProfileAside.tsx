@@ -10,14 +10,14 @@ export function ProfileAside() {
           </div>
           <div className="flex items-start justify-between gap-4">
             <dt className="text-neutral-500 dark:text-neutral-400">역할</dt>
-            <dd className="font-medium text-neutral-800 dark:text-neutral-100">Frontend Developer</dd>
+            <dd className="font-medium text-neutral-800 dark:text-neutral-100">Frontend Developer · Full-Stack</dd>
           </div>
           <div className="flex items-start justify-between gap-4">
             <dt className="text-neutral-500 dark:text-neutral-400">기반</dt>
             <dd className="text-right text-neutral-800 dark:text-neutral-100">
-              서울 · Remote
+              경기도 안양시
               <br />
-              Korean / English
+              Korean
             </dd>
           </div>
         </dl>
@@ -53,7 +53,7 @@ export function ProfileAside() {
           <span className="rounded-full bg-slate-200/90 px-2.5 py-1.5 dark:bg-slate-800/80">React</span>
           <span className="rounded-full bg-slate-200/90 px-2.5 py-1.5 dark:bg-slate-800/80">TypeScript</span>
           <span className="rounded-full bg-slate-200/90 px-2.5 py-1.5 dark:bg-slate-800/80">Tailwind CSS</span>
-          <span className="rounded-full bg-slate-200/90 px-2.5 py-1.5 dark:bg-slate-800/80">Git · GitHub</span>
+          <span className="rounded-full bg-slate-200/90 px-2.5 py-1.5 dark:bg-slate-800/80">Git · GitHub</span> 
         </div>
       </div>
     </aside>

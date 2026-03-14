@@ -14,12 +14,12 @@ export function ProfileMain() {
             PORTFOLIO
           </p>
           <h1 className="text-3xl md:text-4xl lg:text-5xl font-semibold tracking-tight">
-            <span className="bg-gradient-to-r from-sky-500 via-emerald-500 to-cyan-600 bg-clip-text text-transparent dark:from-sky-300 dark:via-emerald-300 dark:to-cyan-300">
+            <span className="block bg-gradient-to-r from-sky-500 via-emerald-500 to-cyan-600 bg-clip-text text-transparent dark:from-sky-300 dark:via-emerald-300 dark:to-cyan-300">
               Wooju
             </span>
-            <span className="text-neutral-800 dark:text-neutral-100">
-              {" "}
-              · Frontend Developer · Fullstack capable
+
+            <span className="block text-lg md:text-xl text-neutral-800 dark:text-neutral-100">
+            Frontend Developer · Full-Stack
             </span>
           </h1>
           <p className="text-sm md:text-base text-neutral-600 dark:text-neutral-400">
@@ -59,7 +59,15 @@ export function ProfileMain() {
           About
         </h2>
         <p className="text-sm md:text-base leading-relaxed text-neutral-600 dark:text-neutral-300">
-        사용자 경험을 최우선으로 생각하며, 화면에 보이는 기능 하나도 어떤 의도를 위해 존재하는지 맥락을 먼저 이해하고 개발합니다.컴포넌트 구조와 상태 흐름을 설계할 때 단순히 동작하는 코드가 아니라,서비스 전체 흐름 속에서 데이터가 어떻게 이동하고 어떤 의미를 가지는지까지 고려합니다.특히 View Model과 데이터 구조를 기준으로 UI와 로직을 연결하여 유지보수성과 확장성을 높이는 개발 방식을 지향합니다.기획자, 백엔드, 디자이너와의 협업 과정에서 서비스가 전달해야 할 본질적인 가치가 무엇인지 고민하며, 단순한 기능 구현을 넘어 사용자에게 의도와 의미가 자연스럽게 전달되는 인터페이스를 만드는 개발자입니다.
+          사용자 경험을 최우선으로 생각하며, 화면에 보이는 기능 하나도 어떤
+          의도를 위해 존재하는지 맥락을 먼저 이해하고 개발합니다.컴포넌트 구조와
+          상태 흐름을 설계할 때 단순히 동작하는 코드가 아니라,서비스 전체 흐름
+          속에서 데이터가 어떻게 이동하고 어떤 의미를 가지는지까지
+          고려합니다.특히 View Model과 데이터 구조를 기준으로 UI와 로직을
+          연결하여 유지보수성과 확장성을 높이는 개발 방식을 지향합니다.기획자,
+          백엔드, 디자이너와의 협업 과정에서 서비스가 전달해야 할 본질적인
+          가치가 무엇인지 고민하며, 단순한 기능 구현을 넘어 사용자에게 의도와
+          의미가 자연스럽게 전달되는 인터페이스를 만드는 개발자입니다.
         </p>
       </div>
 
