@@ -43,12 +43,19 @@ export default function MbnMarathonPage() {
               <strong>신청자 입금 관리 페이지</strong>
               (페이지네이션·수정/삭제·엑셀 다운로드)를 구현했습니다.
             </p>
+
             <div className="flex flex-wrap gap-1.5 text-[11px]">
               <span className="rounded-full bg-slate-100 px-2 py-1 text-slate-700 dark:bg-slate-800 dark:text-slate-200">
                 WordPress
               </span>
               <span className="rounded-full bg-slate-100 px-2 py-1 text-slate-700 dark:bg-slate-800 dark:text-slate-200">
                 PHP
+              </span>
+              <span className="rounded-full bg-slate-100 px-2 py-1 text-slate-700 dark:bg-slate-800 dark:text-slate-200">
+                JavaScript
+              </span>
+              <span className="rounded-full bg-slate-100 px-2 py-1 text-slate-700 dark:bg-slate-800 dark:text-slate-200">
+                Forminator
               </span>
             </div>
           </header>

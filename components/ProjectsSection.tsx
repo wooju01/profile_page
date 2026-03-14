@@ -28,7 +28,7 @@ const PROJECTS: Project[] = [
     slug: "mbn-marathon",
     name: "MBN 거제마라톤",
     short: "마라톤 대회 참가자의 신청부터 관리자 운영까지 전 과정을 디지털화한 대회 운영 웹 서비스",
-    tags: ["WordPress"],
+    tags: ["WordPress", "PHP", "JavaScript", "Forminator"],
     url: "https://marathon-mbngj.com/",
   },
   {
