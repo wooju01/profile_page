@@ -10,10 +10,7 @@ export function ProfileMain() {
           </div>
         </div>
         <div className="space-y-1">
-          <p className="text-xs md:text-sm font-medium uppercase tracking-[0.26em] text-sky-600 dark:text-sky-400/80">
-            PORTFOLIO
-          </p>
-          <h1 className="text-3xl md:text-4xl lg:text-5xl font-semibold tracking-tight">
+          <h1 className="text-3xl md:text-4xl lg:text-6xl font-semibold tracking-tight">
             <span className="block bg-gradient-to-r from-sky-500 via-emerald-500 to-cyan-600 bg-clip-text text-transparent dark:from-sky-300 dark:via-emerald-300 dark:to-cyan-300">
               Wooju
             </span>
@@ -55,10 +52,10 @@ export function ProfileMain() {
       </div>
 
       <div className="space-y-3.5">
-        <h2 className="text-base md:text-lg font-semibold text-neutral-800 dark:text-neutral-100">
+        <h2 className="text-base md:text-xl font-semibold text-neutral-800 dark:text-neutral-100">
           About
         </h2>
-        <p className="text-sm md:text-base leading-relaxed text-neutral-600 dark:text-neutral-300">
+        <p className="text-sm md:text-lg leading-relaxed text-neutral-600 dark:text-neutral-300">
           사용자 경험을 최우선으로 생각하며, 화면에 보이는 기능 하나도 어떤
           의도를 위해 존재하는지 맥락을 먼저 이해하고 개발합니다.컴포넌트 구조와
           상태 흐름을 설계할 때 단순히 동작하는 코드가 아니라,서비스 전체 흐름
@@ -75,7 +72,7 @@ export function ProfileMain() {
 
       <div className="grid grid-cols-2 gap-5 text-xs md:text-sm">
         <div className="rounded-2xl border border-slate-200 bg-slate-50/80 p-5 space-y-2.5 dark:border-white/5 dark:bg-slate-900/50">
-          <p className="text-[11px] font-medium uppercase tracking-[0.18em] text-neutral-500 dark:text-neutral-400">
+          <p className="text-[11px] md:text-xs font-medium uppercase tracking-[0.18em] text-neutral-500 dark:text-neutral-400">
             Focus
           </p>
           <ul className="space-y-1.5 text-neutral-700 dark:text-neutral-200">
