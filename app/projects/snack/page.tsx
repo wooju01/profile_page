@@ -252,16 +252,47 @@ export default function PortfolioPage() {
                 </div>
 
                 <div className="rounded-2xl border border-slate-200 bg-white/70 p-4 dark:border-slate-700/70 dark:bg-slate-900/50">
-                  <p className="font-semibold">2) 회원 관리 (FE)</p>
-                  <ul className="mt-2 list-disc space-y-1 pl-5">
-                    <li>
-                      검색/페이징 + 초대/삭제/권한 변경을 단일 화면에서 처리
-                    </li>
-                    <li>
-                      초대/권한수정 모달 통합(검증: Zod + RHF), 충돌 케이스
-                      메시지화
-                    </li>
-                    <li>모바일 카드형 + 데스크톱 테이블형 반응형, ARIA 적용</li>
+                  <p className="font-semibold">2) 회원 관리 핵심 구현 (FE)</p>
+                  <p className="text-sm text-neutral-600 dark:text-neutral-300">
+                    React Query를 활용하여 회원 목록을 서버 상태로 관리하고,
+                    검색어 변경 시 자동으로 데이터를 재조회하도록 구현했습니다.
+                    또한 mutation 이후 invalidateQueries를 통해 최신 상태를
+                    유지했습니다.
+                  </p>
+
+                  {/* 핵심 코드 */}
+                  <div>
+                    <p className="text-xs font-semibold text-neutral-500">
+                      React Query (데이터 조회)
+                    </p>
+                    <pre className="mt-2 overflow-x-auto rounded-xl bg-slate-900 p-4 text-xs text-white">
+                      {`const { data } = useQuery({
+  queryKey: ["companyUsers", name],
+  queryFn: () => fetchAllCompanyUsers({ name, limit: 50 }),
+});`}
+                    </pre>
+                  </div>
+
+                  <div>
+                    <p className="text-xs font-semibold text-neutral-500">
+                      Mutation + 캐시 무효화
+                    </p>
+                    <pre className="mt-2 overflow-x-auto rounded-xl bg-slate-900 p-4 text-xs text-white">
+                      {`const deleteUserMutation = useMutation({
+  mutationFn: deleteUserById,
+  onSuccess: () => {
+    queryClient.invalidateQueries({ queryKey: ["companyUsers"] });
+  },
+});`}
+                    </pre>
+                  </div>
+
+                  {/* 핵심 포인트 */}
+                  <ul className="list-disc space-y-1 pl-5 text-sm">
+                    <li>React Query로 서버 상태 관리</li>
+                    <li>invalidateQueries로 데이터 일관성 유지</li>
+                    <li>검색어 기반 자동 refetch</li>
+                    <li>Toast UX로 사용자 피드백 제공</li>
                   </ul>
                 </div>
 
