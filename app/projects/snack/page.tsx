@@ -306,6 +306,10 @@ export default function PortfolioPage() {
                     <li>
                       상태 변경 후 목록/예산 자동 재조회 + 로딩/토스트 피드백
                     </li>
+                    <li>
+                      React Query mutation + invalidateQueries로 상태 변경 후
+                      데이터 일관성 유지
+                    </li>
                   </ul>
                 </div>
 
@@ -319,6 +323,9 @@ export default function PortfolioPage() {
                     </li>
                     <li>
                       성공 시 사용자 재조회 + 토스트 + 리다이렉트(/products)
+                    </li>
+                    <li>
+                      조건부 렌더링으로 권한별 UI 분기 및 불필요한 입력 방지
                     </li>
                   </ul>
                 </div>
