@@ -10,13 +10,13 @@ export const metadata: Metadata = {
 
 export default function PortfolioPage() {
   return (
-    <main className="min-h-screen bg-gradient-to-b from-slate-100 via-white to-slate-100 px-6 py-10 text-foreground dark:from-slate-950 dark:via-slate-900 dark:to-slate-950">
-      <div className="mx-auto flex w-full max-w-4xl flex-col gap-6">
+    <main className="min-h-screen bg-gradient-to-b from-slate-100 via-white to-slate-100 px-8 py-12 text-foreground dark:from-slate-950 dark:via-slate-900 dark:to-slate-950">
+      <div className="mx-auto flex w-full max-w-5xl flex-col gap-8">
         {/* 상단 뒤로가기 */}
         <div className="flex items-center justify-between">
           <Link
             href="/"
-            className="inline-flex items-center gap-2 rounded-full border border-slate-200 bg-white/80 px-3 py-1.5 text-xs text-slate-700 shadow-sm transition hover:border-sky-300 hover:text-sky-700 dark:border-slate-700 dark:bg-slate-900/80 dark:text-slate-200 dark:hover:border-sky-500 dark:hover:text-sky-300"
+            className="inline-flex items-center gap-2 rounded-full border border-slate-200 bg-white/80 px-3 py-1.5 text-sm text-slate-700 shadow-sm transition hover:border-sky-300 hover:text-sky-700 dark:border-slate-700 dark:bg-slate-900/80 dark:text-slate-200 dark:hover:border-sky-500 dark:hover:text-sky-300"
           >
             <span className="text-sm">←</span>
             <span>프로필로 돌아가기</span>
@@ -27,12 +27,12 @@ export default function PortfolioPage() {
         </div>
 
         {/* 메인 카드 */}
-        <section className="rounded-3xl border border-slate-200 bg-white/90 p-7 shadow-lg dark:border-white/10 dark:bg-slate-950/90">
-          <header className="space-y-2 border-b border-slate-100 pb-5 dark:border-slate-800">
-            <h1 className="text-xl md:text-2xl font-semibold text-neutral-900 dark:text-neutral-50">
+        <section className="rounded-3xl border border-slate-200 bg-white/90 p-8 shadow-lg dark:border-white/10 dark:bg-slate-950/90">
+          <header className="space-y-2 border-b border-slate-100 pb-6 dark:border-slate-800">
+            <h1 className="text-2xl md:text-3xl font-semibold text-neutral-900 dark:text-neutral-50">
               Snack
             </h1>
-            <p className="text-sm md:text-base text-neutral-600 dark:text-neutral-300">
+            <p className="text-[16px] md:text-[18px] text-neutral-600 dark:text-neutral-300">
               상품/주문/회사 구성원 관리와 결제까지 이어지는 운영 플로우를
               다루는 서비스입니다. 백엔드에서는 <strong>Product API</strong>를,
               프론트엔드에서는 <strong>회원 관리/주문 관리/프로필</strong>{" "}
@@ -63,7 +63,7 @@ export default function PortfolioPage() {
             </div>
           </header>
 
-          <div className="mt-5 space-y-4 text-sm md:text-base text-neutral-700 dark:text-neutral-200">
+          <div className="mt-6 space-y-5 text-[16px] md:text-[17px] text-neutral-700 dark:text-neutral-200">
             <section className="space-y-1">
               <h2 className="text-xs font-semibold uppercase tracking-[0.18em] text-neutral-500 dark:text-neutral-400">
                 목표
@@ -101,7 +101,7 @@ export default function PortfolioPage() {
 
               <div className="grid gap-3 md:grid-cols-2">
                 <div className="rounded-2xl border border-slate-200 bg-white/70 p-4 dark:border-slate-700/70 dark:bg-slate-900/50">
-                  <p className="text-xs font-semibold uppercase tracking-[0.18em] text-neutral-500 dark:text-neutral-400">
+                  <p className="text-sm font-semibold uppercase tracking-[0.18em] text-neutral-500 dark:text-neutral-400">
                     Frontend
                   </p>
                   <ul className="mt-2 list-disc space-y-1 pl-5">
@@ -116,7 +116,7 @@ export default function PortfolioPage() {
                 </div>
 
                 <div className="rounded-2xl border border-slate-200 bg-white/70 p-4 dark:border-slate-700/70 dark:bg-slate-900/50">
-                  <p className="text-xs font-semibold uppercase tracking-[0.18em] text-neutral-500 dark:text-neutral-400">
+                  <p className="text-sm font-semibold uppercase tracking-[0.18em] text-neutral-500 dark:text-neutral-400">
                     Backend
                   </p>
                   <ul className="mt-2 list-disc space-y-1 pl-5">
@@ -159,11 +159,11 @@ export default function PortfolioPage() {
                     </li>
                   </ul>
                   <div className="mt-4 space-y-4">
-                    <p className="text-xs font-semibold uppercase tracking-[0.18em] text-neutral-500">
+                    <p className="text-sm font-semibold uppercase tracking-[0.18em] text-neutral-500">
                       상품 조회 API 핵심 구현
                     </p>
                     {/* 설명 */}
-                    <p className="text-sm text-neutral-600 dark:text-neutral-300">
+                    <p className="text-[16px] text-neutral-600 dark:text-neutral-300">
                       커서 기반 페이지네이션과 정렬/카테고리 필터를 적용한 상품
                       조회 API를 구현했습니다. Controller → Service → Repository
                       구조를 통해 관심사를 분리하고, 사용자별 찜 여부를 서버에서
@@ -172,10 +172,10 @@ export default function PortfolioPage() {
 
                     {/* Controller */}
                     <div>
-                      <p className="text-xs font-semibold text-neutral-500">
+                      <p className="text-sm font-semibold text-neutral-500">
                         Controller
                       </p>
-                      <pre className="mt-2 overflow-x-auto rounded-xl bg-slate-900 p-4 text-xs text-white">
+                      <pre className="mt-2 overflow-x-auto rounded-xl bg-slate-900 p-4 text-sm text-white">
                         {`const items = await productService.getProductList({
                             sort: sortOption,
                             category: categoryId,
@@ -191,10 +191,10 @@ export default function PortfolioPage() {
 
                     {/* Repository 핵심 */}
                     <div>
-                      <p className="text-xs font-semibold text-neutral-500">
+                      <p className="text-sm font-semibold text-neutral-500">
                         Repository
                       </p>
-                      <pre className="mt-2 overflow-x-auto rounded-xl bg-slate-900 p-4 text-xs text-white">
+                      <pre className="mt-2 overflow-x-auto rounded-xl bg-slate-900 p-4 text-sm text-white">
                         {`const products = await prisma.product.findMany({
                         where: {
                           deletedAt: null,
@@ -226,7 +226,7 @@ export default function PortfolioPage() {
                         <p className="font-semibold">
                           커서 페이지네이션 중 중복 데이터 발생 문제
                         </p>
-                        <ul className="mt-2 list-disc space-y-1 pl-5 text-sm">
+                        <ul className="mt-2 list-disc space-y-1 pl-5 text-[16px]">
                           <li>
                             문제: 동일한 정렬 기준에서 커서 이동 시 중복 데이터
                             발생
@@ -240,7 +240,7 @@ export default function PortfolioPage() {
                     </section>
 
                     {/* 핵심 포인트 */}
-                    <ul className="list-disc space-y-1 pl-5 text-sm text-neutral-700 dark:text-neutral-200">
+                    <ul className="list-disc space-y-1 pl-5 text-[16px] text-neutral-700 dark:text-neutral-200">
                       <li>
                         커서 기반 페이지네이션으로 대용량 데이터 안정적 처리
                       </li>
@@ -253,7 +253,7 @@ export default function PortfolioPage() {
 
                 <div className="rounded-2xl border border-slate-200 bg-white/70 p-4 dark:border-slate-700/70 dark:bg-slate-900/50">
                   <p className="font-semibold">2) 회원 관리 핵심 구현 (FE)</p>
-                  <p className="text-sm text-neutral-600 dark:text-neutral-300">
+                  <p className="text-[16px] text-neutral-600 dark:text-neutral-300">
                     React Query를 활용하여 회원 목록을 서버 상태로 관리하고,
                     검색어 변경 시 자동으로 데이터를 재조회하도록 구현했습니다.
                     또한 mutation 이후 invalidateQueries를 통해 최신 상태를
@@ -262,10 +262,10 @@ export default function PortfolioPage() {
 
                   {/* 핵심 코드 */}
                   <div>
-                    <p className="text-xs font-semibold text-neutral-500">
+                    <p className="text-sm font-semibold text-neutral-500">
                       React Query (데이터 조회)
                     </p>
-                    <pre className="mt-2 overflow-x-auto rounded-xl bg-slate-900 p-4 text-xs text-white">
+                    <pre className="mt-2 overflow-x-auto rounded-xl bg-slate-900 p-4 text-sm text-white">
                       {`const { data } = useQuery({
   queryKey: ["companyUsers", name],
   queryFn: () => fetchAllCompanyUsers({ name, limit: 50 }),
@@ -274,10 +274,10 @@ export default function PortfolioPage() {
                   </div>
 
                   <div>
-                    <p className="text-xs font-semibold text-neutral-500">
+                    <p className="text-sm font-semibold text-neutral-500">
                       Mutation + 캐시 무효화
                     </p>
-                    <pre className="mt-2 overflow-x-auto rounded-xl bg-slate-900 p-4 text-xs text-white">
+                    <pre className="mt-2 overflow-x-auto rounded-xl bg-slate-900 p-4 text-sm text-white">
                       {`const deleteUserMutation = useMutation({
   mutationFn: deleteUserById,
   onSuccess: () => {
@@ -288,7 +288,7 @@ export default function PortfolioPage() {
                   </div>
 
                   {/* 핵심 포인트 */}
-                  <ul className="list-disc space-y-1 pl-5 text-sm">
+                  <ul className="list-disc space-y-1 pl-5 text-[16px]">
                     <li>React Query로 서버 상태 관리</li>
                     <li>invalidateQueries로 데이터 일관성 유지</li>
                     <li>검색어 기반 자동 refetch</li>

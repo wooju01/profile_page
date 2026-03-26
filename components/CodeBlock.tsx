@@ -15,7 +15,7 @@ export function CodeBlock({ code, language = "text", title, why }: CodeBlockProp
   return (
     <div className="space-y-2">
       {(title || language) && (
-        <div className="flex items-center gap-2 text-[11px] uppercase tracking-wider text-neutral-500 dark:text-neutral-400">
+        <div className="flex items-center gap-2 text-[12px] uppercase tracking-wider text-neutral-500 dark:text-neutral-400">
           {title && <span className="font-medium">{title}</span>}
           {language && (
             <span className="rounded bg-slate-200/80 px-1.5 py-0.5 dark:bg-slate-700/80">
@@ -24,11 +24,11 @@ export function CodeBlock({ code, language = "text", title, why }: CodeBlockProp
           )}
         </div>
       )}
-      <pre className="overflow-x-auto rounded-xl border border-slate-200 bg-slate-900 px-4 py-3 text-xs leading-relaxed text-slate-100 dark:border-slate-700">
+      <pre className="overflow-x-auto rounded-xl border border-slate-200 bg-slate-900 px-4 py-3 text-sm leading-relaxed text-slate-100 dark:border-slate-700">
         <code>{code}</code>
       </pre>
       {why && (
-        <p className="text-xs text-neutral-600 dark:text-neutral-400">
+        <p className="text-sm text-neutral-600 dark:text-neutral-400">
           <span className="font-medium text-neutral-700 dark:text-neutral-300">왜 사용했는지:</span>{" "}
           {why}
         </p>
