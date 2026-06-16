@@ -44,6 +44,12 @@ const PROJECTS: Project[] = [
     tags: ["Next.js", "React", "Vercel"],
     url: "https://favorite-photo-psi.vercel.app/",
   },
+  {
+    slug: "nexus",
+    name: "Nexus",
+    short: "Slack 실시간 채팅과 Linear 태스크 관리를 하나로 통합한 팀 협업 대시보드",
+    tags: ["Next.js 16", "NestJS", "Socket.io", "PostgreSQL"],
+  },
 ];
 
 export function ProjectsSection() {
