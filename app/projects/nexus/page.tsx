@@ -56,6 +56,26 @@ export default function NexusPage() {
                 </span>
               ))}
             </div>
+            <div className="flex flex-wrap gap-2 text-sm">
+              <a
+                href="https://github.com/wooju01/Nexus-FE"
+                target="_blank"
+                rel="noopener noreferrer"
+                className="inline-flex items-center gap-1.5 rounded-full border border-slate-200 bg-white px-3 py-1.5 text-slate-700 shadow-sm transition hover:border-sky-300 hover:text-sky-700 dark:border-slate-700 dark:bg-slate-900 dark:text-slate-200 dark:hover:border-sky-500 dark:hover:text-sky-300"
+              >
+                <span>Frontend 저장소</span>
+                <span aria-hidden>↗</span>
+              </a>
+              <a
+                href="https://github.com/wooju01/Nexus-BE"
+                target="_blank"
+                rel="noopener noreferrer"
+                className="inline-flex items-center gap-1.5 rounded-full border border-slate-200 bg-white px-3 py-1.5 text-slate-700 shadow-sm transition hover:border-sky-300 hover:text-sky-700 dark:border-slate-700 dark:bg-slate-900 dark:text-slate-200 dark:hover:border-sky-500 dark:hover:text-sky-300"
+              >
+                <span>Backend 저장소</span>
+                <span aria-hidden>↗</span>
+              </a>
+            </div>
           </header>
 
           <div className="mt-6 space-y-5 text-[16px] md:text-[17px] text-neutral-700 dark:text-neutral-200">
@@ -128,9 +148,88 @@ export default function NexusPage() {
               </h2>
 
               <div className="space-y-3">
-                {/* 1) Ctrl+V 이미지 붙여넣기 */}
+                {/* 1) 실시간 채팅 — WebSocket Presence 관리 */}
                 <div className="rounded-2xl border border-slate-200 bg-white/70 p-4 dark:border-slate-700/70 dark:bg-slate-900/50">
-                  <p className="font-semibold">1) Ctrl+V 이미지 붙여넣기 업로드 (FE + BE)</p>
+                  <p className="font-semibold">1) 실시간 채팅 — 멀티 탭/디바이스 Presence 관리 (BE)</p>
+                  <p className="mt-2 text-[16px] text-neutral-600 dark:text-neutral-300">
+                    Socket.io 기반 단일 게이트웨이로 채널·DM·스레드 이벤트를
+                    처리했습니다. 같은 유저가 여러 탭·기기에서 동시 접속할 수
+                    있어, 소켓 하나가 끊긴다고 바로 오프라인 처리하면 다른
+                    탭은 연결이 남아 있는데도 상태가 어긋나는 문제가 있어
+                    userId 단위로 소켓을 묶어 관리했습니다.
+                  </p>
+
+                  <div className="mt-4 space-y-4">
+                    <div>
+                      <p className="text-sm font-semibold text-neutral-500">
+                        BE — userId → socketId Set 매핑
+                      </p>
+                      <pre className="mt-2 overflow-x-auto rounded-xl bg-slate-900 p-4 text-sm text-white">
+                        {`private readonly userSockets = new Map<string, Set<string>>();
+
+async handleConnection(client: Socket) {
+  const payload = this.jwtService.verify(token, { secret: ... });
+  if (!this.userSockets.has(payload.sub)) {
+    this.userSockets.set(payload.sub, new Set());
+  }
+  this.userSockets.get(payload.sub)!.add(client.id);
+
+  // 첫 소켓 연결 시에만 ONLINE으로 전환
+  if (this.userSockets.get(payload.sub)!.size === 1) {
+    await this.setPresence(payload.sub, PresenceStatus.ONLINE);
+  }
+}
+
+async handleDisconnect(client: Socket) {
+  const sockets = this.userSockets.get(userId);
+  sockets?.delete(client.id);
+  // 마지막 연결이 끊길 때만 OFFLINE으로 전환
+  if (sockets && sockets.size === 0) {
+    await this.setPresence(userId, PresenceStatus.OFFLINE);
+  }
+}`}
+                      </pre>
+                    </div>
+
+                    <div className="rounded-2xl border border-slate-200 bg-white/70 p-4 dark:border-slate-700/70 dark:bg-slate-900/50">
+                      <p className="font-semibold">트러블슈팅</p>
+                      <ul className="mt-2 list-disc space-y-1 pl-5 text-[16px]">
+                        <li>
+                          문제: 유저 1명 = 소켓 1개로 가정하면, 다른 탭이
+                          열려 있어도 한 탭만 닫는 순간{" "}
+                          <code className="rounded bg-slate-100 px-1 dark:bg-slate-800">presence.changed</code>
+                          가 OFFLINE으로 브로드캐스트됨
+                        </li>
+                        <li>
+                          해결: userId → Set&lt;socketId&gt;로 다중 연결을
+                          추적해 Set이 완전히 비었을 때만 OFFLINE 처리
+                        </li>
+                      </ul>
+                    </div>
+
+                    <ul className="list-disc space-y-1 pl-5 text-[16px]">
+                      <li>
+                        연결 시 JWT 검증 후 개인 알림 룸(
+                        <code className="rounded bg-slate-100 px-1 dark:bg-slate-800">user:userId</code>
+                        )에 자동 join
+                      </li>
+                      <li>
+                        DM/그룹 DM 채널도 연결 시점에 자동 join해 FE가 별도
+                        이벤트를 emit하지 않아도 알림 수신 가능
+                      </li>
+                      <li>
+                        채널·프로젝트(보드)를 Socket.io room으로 분리해{" "}
+                        <code className="rounded bg-slate-100 px-1 dark:bg-slate-800">message.created</code>,{" "}
+                        <code className="rounded bg-slate-100 px-1 dark:bg-slate-800">task.updated</code>{" "}
+                        등 이벤트를 대상 룸에만 브로드캐스트
+                      </li>
+                    </ul>
+                  </div>
+                </div>
+
+                {/* 2) Ctrl+V 이미지 붙여넣기 */}
+                <div className="rounded-2xl border border-slate-200 bg-white/70 p-4 dark:border-slate-700/70 dark:bg-slate-900/50">
+                  <p className="font-semibold">2) Ctrl+V 이미지 붙여넣기 업로드 (FE + BE)</p>
                   <p className="mt-2 text-[16px] text-neutral-600 dark:text-neutral-300">
                     클립보드 이미지를 채팅창에 붙여넣으면 즉시 Supabase Storage에
                     업로드되고, 미리보기와 함께 메시지에 첨부되는 플로우를
@@ -196,9 +295,9 @@ body: new Uint8Array(file.buffer)`}
                   </div>
                 </div>
 
-                {/* 2) 홈 KPI 카드 */}
+                {/* 3) 홈 KPI 카드 */}
                 <div className="rounded-2xl border border-slate-200 bg-white/70 p-4 dark:border-slate-700/70 dark:bg-slate-900/50">
-                  <p className="font-semibold">2) 홈 KPI 카드 — 4개 API 병렬 호출 (FE)</p>
+                  <p className="font-semibold">3) 홈 KPI 카드 — 4개 API 병렬 호출 (FE)</p>
                   <p className="mt-2 text-[16px] text-neutral-600 dark:text-neutral-300">
                     홈 대시보드 진입 시 미읽은 알림·오늘 마감 태스크·미읽은
                     메시지·온라인 팀원 수를 <code className="rounded bg-slate-100 px-1 dark:bg-slate-800">Promise.all</code>로 병렬 조회해
@@ -235,9 +334,9 @@ body: new Uint8Array(file.buffer)`}
                   </ul>
                 </div>
 
-                {/* 3) GET /tasks/my */}
+                {/* 4) GET /tasks/my */}
                 <div className="rounded-2xl border border-slate-200 bg-white/70 p-4 dark:border-slate-700/70 dark:bg-slate-900/50">
-                  <p className="font-semibold">3) GET /tasks/my — 프로젝트 횡단 태스크 조회 (BE)</p>
+                  <p className="font-semibold">4) GET /tasks/my — 프로젝트 횡단 태스크 조회 (BE)</p>
                   <p className="mt-2 text-[16px] text-neutral-600 dark:text-neutral-300">
                     특정 프로젝트가 아닌 "나에게 할당된 모든 워크스페이스 태스크"를
                     한 번에 조회하는 전용 엔드포인트를 구현했습니다.
@@ -300,6 +399,21 @@ getTask(@Param("id") id: string) { ... }`}
                   </div>
                 </div>
               </div>
+            </section>
+
+            <section className="space-y-1">
+              <h2 className="text-xs font-semibold uppercase tracking-[0.18em] text-neutral-500 dark:text-neutral-400">
+                회고
+              </h2>
+              <p>
+                채팅·태스크·알림이 하나의 이벤트 흐름으로 얽히다 보니, REST와
+                WebSocket 중 어느 쪽으로 상태를 흘려보낼지 매번 판단이
+                필요했습니다. 특히 Presence는 현재 서버 메모리(Map)에만
+                저장되어 있어 인스턴스를 여러 대로 늘리면 그대로는 동작하지
+                않는다는 한계가 있습니다. 다음 단계로는 Presence·타이핑 상태처럼
+                휘발성이 강한 데이터를 Redis로 분리해, 서버가 여러 대여도
+                일관된 온라인 상태를 유지하도록 개선하고 싶습니다.
+              </p>
             </section>
           </div>
         </section>
