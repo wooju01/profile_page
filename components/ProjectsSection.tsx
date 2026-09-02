@@ -18,11 +18,10 @@ function formatUrlLabel(url: string) {
 
 const PROJECTS: Project[] = [
   {
-    slug: "snack",
-    name: "Snack Site",
-    short: "기업의 간식 구매·관리 프로세스를 디지털화해 예산 집행과 자원 운영의 효율성을 높이는 사내 복지 관리 서비스",
-    tags: ["Next.js", "React", "Tailwind CSS", "AWS"],
-    url: "https://5nack.site",
+    slug: "nexus",
+    name: "Nexus",
+    short: "Slack 실시간 채팅과 Linear 태스크 관리를 하나로 통합한 팀 협업 대시보드",
+    tags: ["Next.js 16", "NestJS", "Socket.io", "PostgreSQL"],
   },
   {
     slug: "mbn-marathon",
@@ -32,10 +31,11 @@ const PROJECTS: Project[] = [
     url: "https://marathon-mbngj.com/",
   },
   {
-    slug: "pandamarket",
-    name: "Pandamarket",
-    short: "재사용 가능한 UI 컴포넌트와 토큰 설계",
-    tags: ["Design System", "Accessibility", "Storybook"],
+    slug: "snack",
+    name: "Snack Site",
+    short: "기업의 간식 구매·관리 프로세스를 디지털화해 예산 집행과 자원 운영의 효율성을 높이는 사내 복지 관리 서비스",
+    tags: ["Next.js", "React", "Tailwind CSS", "AWS"],
+    url: "https://5nack.site",
   },
   {
     slug: "favorite-photo",
@@ -43,12 +43,6 @@ const PROJECTS: Project[] = [
     short: "포인트 기반 포토카드 거래·교환 플랫폼",
     tags: ["Next.js", "React", "Vercel"],
     url: "https://favorite-photo-psi.vercel.app/",
-  },
-  {
-    slug: "nexus",
-    name: "Nexus",
-    short: "Slack 실시간 채팅과 Linear 태스크 관리를 하나로 통합한 팀 협업 대시보드",
-    tags: ["Next.js 16", "NestJS", "Socket.io", "PostgreSQL"],
   },
 ];
 
