@@ -22,6 +22,7 @@ const PROJECTS: Project[] = [
     name: "Nexus",
     short: "Slack 실시간 채팅과 Linear 태스크 관리를 하나로 통합한 팀 협업 대시보드",
     tags: ["Next.js 16", "NestJS", "Socket.io", "PostgreSQL"],
+    url: "https://nexus-fe-two.vercel.app/",
   },
   {
     slug: "mbn-marathon",
@@ -32,7 +33,7 @@ const PROJECTS: Project[] = [
   },
   {
     slug: "snack",
-    name: "Snack Site",
+    name: "Snack",
     short: "기업의 간식 구매·관리 프로세스를 디지털화해 예산 집행과 자원 운영의 효율성을 높이는 사내 복지 관리 서비스",
     tags: ["Next.js", "React", "Tailwind CSS", "AWS"],
     url: "https://5nack.site",
