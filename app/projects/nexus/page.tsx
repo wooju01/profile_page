@@ -1,5 +1,6 @@
 import type { Metadata } from "next";
 import Link from "next/link";
+import { ProjectPager } from "@/components/ProjectPager";
 
 export const metadata: Metadata = {
   title: "Nexus | Wooju",
@@ -78,75 +79,81 @@ export default function NexusPage() {
             </div>
           </header>
 
-          <div className="mt-6 space-y-5 text-[16px] md:text-[17px] text-neutral-700 dark:text-neutral-200">
-            <section className="space-y-1">
-              <h2 className="text-xs font-semibold uppercase tracking-[0.18em] text-neutral-500 dark:text-neutral-400">
-                목표
-              </h2>
-              <p>
-                맥락 전환 없이 대화·작업·알림을 단일 허브에서 처리하는 것이
-                목표였습니다. 협업 도구가 분산될수록 생산성이 떨어진다는 문제를
-                해결하기 위해, 채팅·태스크·알림을 하나의 대시보드로 통합했습니다.
-              </p>
-            </section>
+          <div className="pt-6">
+            <ProjectPager
+              pages={[
+                {
+                  label: "개요",
+                  content: (
+                    <div className="space-y-5">
+                      <section className="space-y-1">
+                        <h2 className="text-xs font-semibold uppercase tracking-[0.18em] text-neutral-500 dark:text-neutral-400">
+                          목표
+                        </h2>
+                        <p>
+                          맥락 전환 없이 대화·작업·알림을 단일 허브에서 처리하는 것이
+                          목표였습니다. 협업 도구가 분산될수록 생산성이 떨어진다는 문제를
+                          해결하기 위해, 채팅·태스크·알림을 하나의 대시보드로 통합했습니다.
+                        </p>
+                      </section>
 
-            <section className="space-y-1">
-              <h2 className="text-xs font-semibold uppercase tracking-[0.18em] text-neutral-500 dark:text-neutral-400">
-                역할
-              </h2>
-              <ul className="list-disc space-y-1 pl-5">
-                <li>
-                  <strong>BE</strong>: NestJS + Prisma + PostgreSQL 기반 REST API
-                  전체 설계·구현, JWT 인증/인가, WebSocket 실시간 이벤트
-                  (채널·DM·스레드), Supabase Storage 이미지 업로드, 태스크
-                  CRUD(담당자·라벨·우선순위), 알림 생성·읽음 처리
-                </li>
-                <li>
-                  <strong>FE</strong>: Next.js 16 App Router + React 19 기반
-                  채널·DM 실시간 채팅, 스레드 패널, Ctrl+V 이미지 붙여넣기
-                  업로드, 홈 대시보드 KPI 카드, 인박스, 칸반 보드, 캘린더, My
-                  Week, 글로벌 사이드바
-                </li>
-              </ul>
-            </section>
+                      <section className="space-y-1">
+                        <h2 className="text-xs font-semibold uppercase tracking-[0.18em] text-neutral-500 dark:text-neutral-400">
+                          역할
+                        </h2>
+                        <ul className="list-disc space-y-1 pl-5">
+                          <li>
+                            <strong>BE</strong>: NestJS + Prisma + PostgreSQL 기반 REST API
+                            전체 설계·구현, JWT 인증/인가, WebSocket 실시간 이벤트
+                            (채널·DM·스레드), Supabase Storage 이미지 업로드, 태스크
+                            CRUD(담당자·라벨·우선순위), 알림 생성·읽음 처리
+                          </li>
+                          <li>
+                            <strong>FE</strong>: Next.js 16 App Router + React 19 기반
+                            채널·DM 실시간 채팅, 스레드 패널, Ctrl+V 이미지 붙여넣기
+                            업로드, 홈 대시보드 KPI 카드, 인박스, 칸반 보드, 캘린더, My
+                            Week, 글로벌 사이드바
+                          </li>
+                        </ul>
+                      </section>
 
-            <section className="space-y-2">
-              <h2 className="text-xs font-semibold uppercase tracking-[0.18em] text-neutral-500 dark:text-neutral-400">
-                기술 스택
-              </h2>
+                      <section className="space-y-2">
+                        <h2 className="text-xs font-semibold uppercase tracking-[0.18em] text-neutral-500 dark:text-neutral-400">
+                          기술 스택
+                        </h2>
 
-              <div className="grid gap-3 md:grid-cols-2">
-                <div className="rounded-2xl border border-slate-200 bg-white/70 p-4 dark:border-slate-700/70 dark:bg-slate-900/50">
-                  <p className="text-sm font-semibold uppercase tracking-[0.18em] text-neutral-500 dark:text-neutral-400">
-                    Frontend
-                  </p>
-                  <ul className="mt-2 list-disc space-y-1 pl-5">
-                    <li>Next.js 16.2 (App Router), React 19, TypeScript 5</li>
-                    <li>Tailwind CSS v4</li>
-                    <li>ESLint 9</li>
-                  </ul>
-                </div>
+                        <div className="grid gap-3 md:grid-cols-2">
+                          <div className="rounded-2xl border border-slate-200 bg-white/70 p-4 dark:border-slate-700/70 dark:bg-slate-900/50">
+                            <p className="text-sm font-semibold uppercase tracking-[0.18em] text-neutral-500 dark:text-neutral-400">
+                              Frontend
+                            </p>
+                            <ul className="mt-2 list-disc space-y-1 pl-5">
+                              <li>Next.js 16.2 (App Router), React 19, TypeScript 5</li>
+                              <li>Tailwind CSS v4</li>
+                              <li>ESLint 9</li>
+                            </ul>
+                          </div>
 
-                <div className="rounded-2xl border border-slate-200 bg-white/70 p-4 dark:border-slate-700/70 dark:bg-slate-900/50">
-                  <p className="text-sm font-semibold uppercase tracking-[0.18em] text-neutral-500 dark:text-neutral-400">
-                    Backend
-                  </p>
-                  <ul className="mt-2 list-disc space-y-1 pl-5">
-                    <li>NestJS, TypeScript</li>
-                    <li>Prisma, PostgreSQL</li>
-                    <li>Supabase Storage</li>
-                    <li>Socket.io (WebSocket)</li>
-                    <li>JWT (Access / Refresh Token)</li>
-                  </ul>
-                </div>
-              </div>
-            </section>
-
-            <section className="space-y-2">
-              <h2 className="text-xs font-semibold uppercase tracking-[0.18em] text-neutral-500 dark:text-neutral-400">
-                주요 구현 기능
-              </h2>
-
+                          <div className="rounded-2xl border border-slate-200 bg-white/70 p-4 dark:border-slate-700/70 dark:bg-slate-900/50">
+                            <p className="text-sm font-semibold uppercase tracking-[0.18em] text-neutral-500 dark:text-neutral-400">
+                              Backend
+                            </p>
+                            <ul className="mt-2 list-disc space-y-1 pl-5">
+                              <li>NestJS, TypeScript</li>
+                              <li>Prisma, PostgreSQL</li>
+                              <li>Supabase Storage</li>
+                              <li>Socket.io (WebSocket)</li>
+                              <li>JWT (Access / Refresh Token)</li>
+                            </ul>
+                          </div>
+                        </div>
+                      </section>
+                    </div>
+                  ),
+                },
+                {
+                  label: "주요 구현 기능",
+                  content: (
               <div className="space-y-3">
                 {/* 1) 실시간 채팅 — WebSocket Presence 관리 */}
                 <div className="rounded-2xl border border-slate-200 bg-white/70 p-4 dark:border-slate-700/70 dark:bg-slate-900/50">
@@ -399,22 +406,29 @@ getTask(@Param("id") id: string) { ... }`}
                   </div>
                 </div>
               </div>
-            </section>
-
-            <section className="space-y-1">
-              <h2 className="text-xs font-semibold uppercase tracking-[0.18em] text-neutral-500 dark:text-neutral-400">
-                회고
-              </h2>
-              <p>
-                채팅·태스크·알림이 하나의 이벤트 흐름으로 얽히다 보니, REST와
-                WebSocket 중 어느 쪽으로 상태를 흘려보낼지 매번 판단이
-                필요했습니다. 특히 Presence는 현재 서버 메모리(Map)에만
-                저장되어 있어 인스턴스를 여러 대로 늘리면 그대로는 동작하지
-                않는다는 한계가 있습니다. 다음 단계로는 Presence·타이핑 상태처럼
-                휘발성이 강한 데이터를 Redis로 분리해, 서버가 여러 대여도
-                일관된 온라인 상태를 유지하도록 개선하고 싶습니다.
-              </p>
-            </section>
+                  ),
+                },
+                {
+                  label: "회고",
+                  content: (
+                    <section className="space-y-1">
+                      <h2 className="text-xs font-semibold uppercase tracking-[0.18em] text-neutral-500 dark:text-neutral-400">
+                        회고
+                      </h2>
+                      <p>
+                        채팅·태스크·알림이 하나의 이벤트 흐름으로 얽히다 보니, REST와
+                        WebSocket 중 어느 쪽으로 상태를 흘려보낼지 매번 판단이
+                        필요했습니다. 특히 Presence는 현재 서버 메모리(Map)에만
+                        저장되어 있어 인스턴스를 여러 대로 늘리면 그대로는 동작하지
+                        않는다는 한계가 있습니다. 다음 단계로는 Presence·타이핑 상태처럼
+                        휘발성이 강한 데이터를 Redis로 분리해, 서버가 여러 대여도
+                        일관된 온라인 상태를 유지하도록 개선하고 싶습니다.
+                      </p>
+                    </section>
+                  ),
+                },
+              ]}
+            />
           </div>
         </section>
       </div>

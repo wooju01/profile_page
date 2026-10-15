@@ -1,6 +1,7 @@
 // app/projects/snack/page.tsx
 import type { Metadata } from "next";
 import Link from "next/link";
+import { ProjectPager } from "@/components/ProjectPager";
 
 export const metadata: Metadata = {
   title: "Snack | Wooju",
@@ -83,79 +84,85 @@ export default function PortfolioPage() {
             </div>
           </header>
 
-          <div className="mt-6 space-y-5 text-[16px] md:text-[17px] text-neutral-700 dark:text-neutral-200">
-            <section className="space-y-1">
-              <h2 className="text-xs font-semibold uppercase tracking-[0.18em] text-neutral-500 dark:text-neutral-400">
-                목표
-              </h2>
-              <p>
-                운영자가 실무에서 바로 쓰는 화면(회원/주문/프로필)과 대용량
-                목록을 견디는 상품 API를 만들어, “업무 플로우를 끊김 없이”
-                이어주는 것이 목표였습니다.
-              </p>
-            </section>
+          <div className="pt-6">
+            <ProjectPager
+              pages={[
+                {
+                  label: "개요",
+                  content: (
+                    <div className="space-y-5">
+                      <section className="space-y-1">
+                        <h2 className="text-xs font-semibold uppercase tracking-[0.18em] text-neutral-500 dark:text-neutral-400">
+                          목표
+                        </h2>
+                        <p>
+                          운영자가 실무에서 바로 쓰는 화면(회원/주문/프로필)과 대용량
+                          목록을 견디는 상품 API를 만들어, “업무 플로우를 끊김 없이”
+                          이어주는 것이 목표였습니다.
+                        </p>
+                      </section>
 
-            <section className="space-y-1">
-              <h2 className="text-xs font-semibold uppercase tracking-[0.18em] text-neutral-500 dark:text-neutral-400">
-                역할
-              </h2>
-              <ul className="list-disc space-y-1 pl-5">
-                <li>
-                  <strong>BE</strong>: Product API(등록/목록·상세/수정/삭제/내
-                  상품), 이미지 업로드(S3+CloudFront), 소프트 딜리트 트랜잭션,
-                  Swagger 문서화
-                </li>
-                <li>
-                  <strong>FE</strong>: 회원 관리(검색/페이징/초대/삭제/권한),
-                  주문 관리(정렬/페이징/승인·반려/예산 검증),
-                  프로필(회사명/비밀번호 변경, 권한 기반 제어), 반응형·ARIA
-                  접근성
-                </li>
-              </ul>
-            </section>
+                      <section className="space-y-1">
+                        <h2 className="text-xs font-semibold uppercase tracking-[0.18em] text-neutral-500 dark:text-neutral-400">
+                          역할
+                        </h2>
+                        <ul className="list-disc space-y-1 pl-5">
+                          <li>
+                            <strong>BE</strong>: Product API(등록/목록·상세/수정/삭제/내
+                            상품), 이미지 업로드(S3+CloudFront), 소프트 딜리트 트랜잭션,
+                            Swagger 문서화
+                          </li>
+                          <li>
+                            <strong>FE</strong>: 회원 관리(검색/페이징/초대/삭제/권한),
+                            주문 관리(정렬/페이징/승인·반려/예산 검증),
+                            프로필(회사명/비밀번호 변경, 권한 기반 제어), 반응형·ARIA
+                            접근성
+                          </li>
+                        </ul>
+                      </section>
 
-            <section className="space-y-2">
-              <h2 className="text-xs font-semibold uppercase tracking-[0.18em] text-neutral-500 dark:text-neutral-400">
-                기술 스택
-              </h2>
+                      <section className="space-y-2">
+                        <h2 className="text-xs font-semibold uppercase tracking-[0.18em] text-neutral-500 dark:text-neutral-400">
+                          기술 스택
+                        </h2>
 
-              <div className="grid gap-3 md:grid-cols-2">
-                <div className="rounded-2xl border border-slate-200 bg-white/70 p-4 dark:border-slate-700/70 dark:bg-slate-900/50">
-                  <p className="text-sm font-semibold uppercase tracking-[0.18em] text-neutral-500 dark:text-neutral-400">
-                    Frontend
-                  </p>
-                  <ul className="mt-2 list-disc space-y-1 pl-5">
-                    <li>Next.js, React, TypeScript</li>
-                    <li>Tailwind CSS, tailwind-merge, clsx</li>
-                    <li>React Query, Zustand</li>
-                    <li>Zod, React Hook Form</li>
-                    <li>ESLint, Prettier, Sentry</li>
-                    <li>OpenAI, TossPayments SDK</li>
-                    <li>Vercel, GitHub, Figma, Notion</li>
-                  </ul>
-                </div>
+                        <div className="grid gap-3 md:grid-cols-2">
+                          <div className="rounded-2xl border border-slate-200 bg-white/70 p-4 dark:border-slate-700/70 dark:bg-slate-900/50">
+                            <p className="text-sm font-semibold uppercase tracking-[0.18em] text-neutral-500 dark:text-neutral-400">
+                              Frontend
+                            </p>
+                            <ul className="mt-2 list-disc space-y-1 pl-5">
+                              <li>Next.js, React, TypeScript</li>
+                              <li>Tailwind CSS, tailwind-merge, clsx</li>
+                              <li>React Query, Zustand</li>
+                              <li>Zod, React Hook Form</li>
+                              <li>ESLint, Prettier, Sentry</li>
+                              <li>OpenAI, TossPayments SDK</li>
+                              <li>Vercel, GitHub, Figma, Notion</li>
+                            </ul>
+                          </div>
 
-                <div className="rounded-2xl border border-slate-200 bg-white/70 p-4 dark:border-slate-700/70 dark:bg-slate-900/50">
-                  <p className="text-sm font-semibold uppercase tracking-[0.18em] text-neutral-500 dark:text-neutral-400">
-                    Backend
-                  </p>
-                  <ul className="mt-2 list-disc space-y-1 pl-5">
-                    <li>Node.js, Express, TypeScript</li>
-                    <li>Prisma, PostgreSQL</li>
-                    <li>Jest, Swagger, Sentry</li>
-                    <li>AWS S3, CloudFront</li>
-                    <li>Docker, node-cron</li>
-                    <li>Route53, RDS, EC2, GitHub, Notion</li>
-                  </ul>
-                </div>
-              </div>
-            </section>
-
-            <section className="space-y-2">
-              <h2 className="text-xs font-semibold uppercase tracking-[0.18em] text-neutral-500 dark:text-neutral-400">
-                주요 구현 기능
-              </h2>
-
+                          <div className="rounded-2xl border border-slate-200 bg-white/70 p-4 dark:border-slate-700/70 dark:bg-slate-900/50">
+                            <p className="text-sm font-semibold uppercase tracking-[0.18em] text-neutral-500 dark:text-neutral-400">
+                              Backend
+                            </p>
+                            <ul className="mt-2 list-disc space-y-1 pl-5">
+                              <li>Node.js, Express, TypeScript</li>
+                              <li>Prisma, PostgreSQL</li>
+                              <li>Jest, Swagger, Sentry</li>
+                              <li>AWS S3, CloudFront</li>
+                              <li>Docker, node-cron</li>
+                              <li>Route53, RDS, EC2, GitHub, Notion</li>
+                            </ul>
+                          </div>
+                        </div>
+                      </section>
+                    </div>
+                  ),
+                },
+                {
+                  label: "주요 구현 기능",
+                  content: (
               <div className="space-y-3">
                 <div className="rounded-2xl border border-slate-200 bg-white/70 p-4 dark:border-slate-700/70 dark:bg-slate-900/50">
                   <p className="font-semibold">1) Product API (BE)</p>
@@ -350,7 +357,10 @@ export default function PortfolioPage() {
                   </ul>
                 </div>
               </div>
-            </section>
+                  ),
+                },
+              ]}
+            />
           </div>
         </section>
       </div>

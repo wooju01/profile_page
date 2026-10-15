@@ -36,7 +36,7 @@ const PROJECTS: Project[] = [
     name: "Snack",
     short: "기업의 간식 구매·관리 프로세스를 디지털화해 예산 집행과 자원 운영의 효율성을 높이는 사내 복지 관리 서비스",
     tags: ["Next.js", "React", "Tailwind CSS", "AWS"],
-    url: "https://5nack.site",
+    url: "https://6-snack-fe.vercel.app/",
   },
   {
     slug: "favorite-photo",
