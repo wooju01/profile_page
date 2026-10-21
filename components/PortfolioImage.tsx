@@ -3,16 +3,11 @@ import Image from "next/image";
 type PortfolioImageProps = {
   src?: string;
   alt: string;
-  /** 이미지 아래 캡션 (선택) */
   caption?: string;
-  /** Next Image 우선 적용. 외부 URL이면 unoptimized 권장 */
   width?: number;
   height?: number;
-  /** true면 16:9 등 비율 유지하며 영역 채움 */
   fill?: boolean;
-  /** fill 사용 시 부모에 적용할 클래스 (예: aspect-video) */
   className?: string;
-  /** true면 이미지 없이 점선 영역만 표시 (나중에 src 넣기) */
   placeholder?: boolean;
 };
 
@@ -37,7 +32,7 @@ export function PortfolioImage({
           </span>
         </div>
         {caption && (
-          <figcaption className="text-center text-xs text-neutral-500 dark:text-neutral-400">
+          <figcaption className="text-center text-sm text-neutral-500 dark:text-neutral-400">
             {caption}
           </figcaption>
         )}
@@ -47,9 +42,10 @@ export function PortfolioImage({
 
   const isExternal = src.startsWith("http");
   const wrapperClass = `relative overflow-hidden rounded-xl border border-slate-200 bg-slate-100 dark:border-slate-700 dark:bg-slate-800 ${fill ? "aspect-video" : ""} ${className}`;
+  const wrapperStyle = !fill && width ? { maxWidth: `${width}px` } : undefined;
 
   return (
-    <figure className="space-y-2">
+    <figure className="space-y-2" style={wrapperStyle}>
       <div className={wrapperClass}>
         {fill ? (
           <Image
@@ -72,7 +68,7 @@ export function PortfolioImage({
         )}
       </div>
       {caption && (
-        <figcaption className="text-center text-xs text-neutral-500 dark:text-neutral-400">
+        <figcaption className="text-center text-sm text-neutral-500 dark:text-neutral-400">
           {caption}
         </figcaption>
       )}

@@ -10,7 +10,7 @@ export const metadata: Metadata = {
 
 export default function NexusPage() {
   return (
-    <main className="min-h-screen bg-gradient-to-b from-slate-100 via-white to-slate-100 px-8 py-12 text-foreground dark:from-slate-950 dark:via-slate-900 dark:to-slate-950">
+    <main className="min-h-screen bg-gradient-to-b from-slate-100 via-white to-slate-100 px-4 py-10 text-foreground sm:px-6 md:px-8 md:py-12 dark:from-slate-950 dark:via-slate-900 dark:to-slate-950">
       <div className="mx-auto flex w-full max-w-5xl flex-col gap-8">
         {/* 상단 뒤로가기 */}
         <div className="flex items-center justify-between">
@@ -27,7 +27,7 @@ export default function NexusPage() {
         </div>
 
         {/* 메인 카드 */}
-        <section className="rounded-3xl border border-slate-200 bg-white/90 p-8 shadow-lg dark:border-white/10 dark:bg-slate-950/90">
+        <section className="rounded-3xl border border-slate-200 bg-white/90 p-5 shadow-lg sm:p-6 md:p-8 dark:border-white/10 dark:bg-slate-950/90">
           <header className="space-y-2 border-b border-slate-100 pb-6 dark:border-slate-800">
             <h1 className="text-2xl md:text-3xl font-semibold text-neutral-900 dark:text-neutral-50">
               Nexus

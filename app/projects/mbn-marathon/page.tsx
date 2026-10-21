@@ -16,7 +16,7 @@ const SECTION_HEADING =
 
 export default function MbnMarathonPage() {
   return (
-    <main className="min-h-screen bg-gradient-to-b from-slate-100 via-white to-slate-100 px-8 py-12 text-foreground dark:from-slate-950 dark:via-slate-900 dark:to-slate-950">
+    <main className="min-h-screen bg-gradient-to-b from-slate-100 via-white to-slate-100 px-4 py-10 text-foreground sm:px-6 md:px-8 md:py-12 dark:from-slate-950 dark:via-slate-900 dark:to-slate-950">
       <div className="mx-auto flex w-full max-w-5xl flex-col gap-8">
         {/* 상단 네비 */}
         <div className="flex items-center justify-between">
@@ -33,12 +33,12 @@ export default function MbnMarathonPage() {
         </div>
 
         {/* 프로젝트 헤더 */}
-        <section className="rounded-3xl border border-slate-200 bg-white/90 p-8 shadow-lg dark:border-white/10 dark:bg-slate-950/90">
+        <section className="rounded-3xl border border-slate-200 bg-white/90 p-5 shadow-lg sm:p-6 md:p-8 dark:border-white/10 dark:bg-slate-950/90">
           <header className="space-y-2 border-b border-slate-100 pb-6 dark:border-slate-800">
             <h1 className="text-xl md:text-2xl font-semibold text-neutral-900 dark:text-neutral-50">
               MBN 거제마라톤
             </h1>
-            <p className="text-[15px] md:text-base text-neutral-600 dark:text-neutral-300">
+            <p className="text-[16px] md:text-base text-neutral-600 dark:text-neutral-300">
               마라톤 대회 참가자의 신청부터 관리자 운영까지 전 과정을 디지털화한
               대회 운영 웹 서비스입니다. 관리자용{" "}
               <strong>신청자 입금 관리 페이지</strong>
@@ -71,7 +71,7 @@ export default function MbnMarathonPage() {
                       <section className="space-y-3">
                         <h2 className={SECTION_HEADING}>프로젝트 개요</h2>
                         <div className="rounded-2xl border border-slate-200 bg-white/80 p-5 dark:border-slate-700/80 dark:bg-slate-900/60">
-                          <p className="text-[15px] text-neutral-700 dark:text-neutral-200">
+                          <p className="text-[16px] text-neutral-700 dark:text-neutral-200">
                             MBN 거제 마라톤 대회의 참가 신청과 운영 관리를 디지털화하기 위해
                             제작된 웹 서비스입니다. 참가 신청 폼을 통해 접수된 데이터를
                             기반으로 관리자 페이지에서 참가자 조회, 입금 상태 관리, 정보 수정
@@ -83,7 +83,7 @@ export default function MbnMarathonPage() {
                       <section className="space-y-3">
                         <h2 className={SECTION_HEADING}>사용 기술 & 선택 이유</h2>
                         <div className="rounded-2xl border border-slate-200 bg-white/80 p-5 dark:border-slate-700/80 dark:bg-slate-900/60">
-                          <ul className="space-y-3 text-[15px] text-neutral-700 dark:text-neutral-200">
+                          <ul className="space-y-3 text-[16px] text-neutral-700 dark:text-neutral-200">
                             <li>
                               <strong>WordPress + Forminator</strong> — 배포 준비 기간이{" "}
                               <strong>1주일</strong>로 짧아 처음부터 풀스택으로 개발하기보다,
@@ -116,7 +116,7 @@ export default function MbnMarathonPage() {
                       <section className="space-y-3">
                         <h2 className={SECTION_HEADING}>개발 중 해결한 문제</h2>
                         <div className="rounded-2xl border border-slate-200 bg-white/80 p-5 dark:border-slate-700/80 dark:bg-slate-900/60">
-                          <ul className="space-y-3 text-[15px] text-neutral-700 dark:text-neutral-200">
+                          <ul className="space-y-3 text-[16px] text-neutral-700 dark:text-neutral-200">
                             <li>
                               Forminator 플러그인은 관리자 화면에서 대량의 신청자 데이터를
                               관리하기 어려워, 신청자 목록 조회·필터·페이지네이션 기능을
@@ -137,7 +137,7 @@ export default function MbnMarathonPage() {
 
                       <section className="space-y-3">
                         <h2 className={SECTION_HEADING}>주요 코드 예시</h2>
-                        <p className="text-[15px] text-neutral-600 dark:text-neutral-300">
+                        <p className="text-[16px] text-neutral-600 dark:text-neutral-300">
                           신청자 삭제 기능을 구현할 때 Forminator 플러그인의 데이터 구조를
                           분석해 entry와 entry_meta 테이블 간의 관계를 고려해야 했습니다. 메타
                           데이터가 먼저 삭제되지 않으면 참조 데이터가 남아 데이터 정합성이
@@ -180,7 +180,7 @@ export default function MbnMarathonPage() {
                       <h2 className={SECTION_HEADING}>신청 폼 UX 개선</h2>
                       <div className="grid gap-6 md:grid-cols-2 items-start">
                         <div className="space-y-3">
-                          <p className="text-[15px] text-neutral-600 dark:text-neutral-300">
+                          <p className="text-[16px] text-neutral-600 dark:text-neutral-300">
                             로그인한 사용자의 정보를 기반으로 신청 폼 일부 필드가 자동으로
                             채워지도록 구성하고, 수정이 필요 없는 항목은 읽기 전용으로
                             처리해 입력 오류를 줄였습니다. 또한 참가 신청 과정을 직관적으로
@@ -188,7 +188,7 @@ export default function MbnMarathonPage() {
                             기념품 옵션이 변경되도록 자바스크립트로 동작을 제어했습니다.
                           </p>
 
-                          <p className="text-[15px] text-neutral-500 dark:text-neutral-400">
+                          <p className="text-[16px] text-neutral-500 dark:text-neutral-400">
                             오른쪽 스크린샷은 실제 운영 환경과 동일한 구조와 스타일을
                             기반으로 재구성한 신청 폼 데모 화면입니다.
                           </p>
@@ -285,7 +285,7 @@ export default function MbnMarathonPage() {
                     <div className="space-y-5">
                       <section className="space-y-3">
                         <h2 className={SECTION_HEADING}>구현 범위 요약</h2>
-                        <ul className="list-disc space-y-1 pl-5 text-[15px] text-neutral-700 dark:text-neutral-200">
+                        <ul className="list-disc space-y-1 pl-5 text-[16px] text-neutral-700 dark:text-neutral-200">
                           <li>
                             신청자 관리 메뉴 — 페이지네이션(50명/페이지),
                             필터(이름·단체·전화·생년월일·종목·입금상태)
@@ -303,7 +303,7 @@ export default function MbnMarathonPage() {
                       <section className="space-y-3">
                         <h2 className={SECTION_HEADING}>운영 결과</h2>
                         <div className="rounded-2xl border border-slate-200 bg-white/80 p-5 dark:border-slate-700/80 dark:bg-slate-900/60">
-                          <ul className="space-y-2 text-[15px] text-neutral-700 dark:text-neutral-200">
+                          <ul className="space-y-2 text-[16px] text-neutral-700 dark:text-neutral-200">
                             <li>• 실제 대회 접수 시스템으로 사용</li>
                             <li>• 약 3,000명의 참가자 신청 처리</li>
                             <li>
