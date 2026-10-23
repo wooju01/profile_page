@@ -59,6 +59,17 @@ export default function MbnMarathonPage() {
                 Forminator
               </span>
             </div>
+            <div className="flex flex-wrap gap-2 text-sm">
+              <a
+                href="https://marathon-mbngj.com/"
+                target="_blank"
+                rel="noopener noreferrer"
+                className="inline-flex items-center gap-1.5 rounded-full border border-slate-200 bg-white px-3 py-1.5 text-slate-700 shadow-sm transition hover:border-sky-300 hover:text-sky-700 dark:border-slate-700 dark:bg-slate-900 dark:text-slate-200 dark:hover:border-sky-500 dark:hover:text-sky-300"
+              >
+                <span>사이트 바로가기</span>
+                <span aria-hidden>↗</span>
+              </a>
+            </div>
           </header>
 
           <div className="pt-6">
