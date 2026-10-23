@@ -1,6 +1,6 @@
 export function ProfileAside() {
   return (
-    <aside className="space-y-7 rounded-2xl border border-slate-200 bg-slate-50/90 p-6 md:p-7 dark:border-white/5 dark:bg-slate-900/70">
+    <aside className="space-y-7 rounded-2xl border border-slate-200 bg-slate-50/90 p-5 sm:p-6 md:p-7 dark:border-white/5 dark:bg-slate-900/70">
       <div className="space-y-3.5">
         <h3 className="text-base md:text-lg font-semibold text-neutral-800 dark:text-neutral-100">Profile</h3>
         <dl className="space-y-2.5 text-xs md:text-sm text-neutral-600 dark:text-neutral-300">

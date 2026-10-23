@@ -70,8 +70,8 @@ export function ProfileMain() {
 
       <ProjectsSection />
 
-      <div className="grid grid-cols-2 gap-5 text-xs md:text-sm">
-        <div className="rounded-2xl border border-slate-200 bg-slate-50/80 p-5 space-y-2.5 dark:border-white/5 dark:bg-slate-900/50">
+      <div className="grid grid-cols-2 gap-3 sm:gap-5 text-xs md:text-sm">
+        <div className="rounded-2xl border border-slate-200 bg-slate-50/80 p-4 sm:p-5 space-y-2.5 dark:border-white/5 dark:bg-slate-900/50">
           <p className="text-[11px] md:text-xs font-medium uppercase tracking-[0.18em] text-neutral-500 dark:text-neutral-400">
             Focus
           </p>
@@ -81,7 +81,7 @@ export function ProfileMain() {
             <li>· 퍼포먼스와 접근성 고려</li>
           </ul>
         </div>
-        <div className="rounded-2xl border border-slate-200 bg-slate-50/80 p-5 space-y-2.5 dark:border-white/5 dark:bg-slate-900/50">
+        <div className="rounded-2xl border border-slate-200 bg-slate-50/80 p-4 sm:p-5 space-y-2.5 dark:border-white/5 dark:bg-slate-900/50">
           <p className="text-[11px] md:text-xs font-medium uppercase tracking-[0.18em] text-neutral-500 dark:text-neutral-400">
             Now
           </p>
