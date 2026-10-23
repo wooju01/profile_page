@@ -1,6 +1,7 @@
 import type { Metadata } from "next";
 import Link from "next/link";
 import { ProjectPager } from "@/components/ProjectPager";
+import { PortfolioImage } from "@/components/PortfolioImage";
 
 export const metadata: Metadata = {
   title: "Nexus | Wooju",
@@ -93,6 +94,14 @@ export default function NexusPage() {
                   label: "개요",
                   content: (
                     <div className="space-y-5">
+                      <PortfolioImage
+                        src="/projects/nexus/landing.png"
+                        alt="Nexus 랜딩 페이지"
+                        caption="랜딩 페이지"
+                        width={1269}
+                        height={1015}
+                      />
+
                       <section className="space-y-1">
                         <h2 className="text-xs font-semibold uppercase tracking-[0.18em] text-neutral-500 dark:text-neutral-400">
                           목표
@@ -634,6 +643,14 @@ return this.prisma.message.findMany({
                       <p className="font-semibold">4) 실시간 채팅 화면 (FE)</p>
 
                       <div className="mt-2 space-y-4">
+                        <PortfolioImage
+                          src="/projects/nexus/chat.png"
+                          alt="Nexus 실시간 채팅 화면 — 채널, 스레드 패널"
+                          caption="채널 채팅 + 스레드 패널"
+                          width={1292}
+                          height={1278}
+                        />
+
                         <div>
                           <p className="text-sm font-semibold text-neutral-500 dark:text-neutral-400">
                             구현 목표
@@ -794,6 +811,23 @@ newFiles.forEach((pf) => {
                           </ul>
                         </div>
 
+                        <div className="grid gap-4 sm:grid-cols-2">
+                          <PortfolioImage
+                            src="/projects/nexus/board-new-task.png"
+                            alt="Nexus 칸반 보드 — 새 태스크 생성 모달"
+                            caption="새 태스크 생성"
+                            width={1279}
+                            height={837}
+                          />
+                          <PortfolioImage
+                            src="/projects/nexus/board-task-detail.png"
+                            alt="Nexus 칸반 보드 — 태스크 상세 패널"
+                            caption="태스크 상세 패널"
+                            width={994}
+                            height={892}
+                          />
+                        </div>
+
                         <p className="text-[16px] text-neutral-600 dark:text-neutral-300">
                           보드에 들어가면{" "}
                           <code className="rounded bg-slate-100 px-1 dark:bg-slate-800">
@@ -862,6 +896,16 @@ updateTaskApi(token, activeId, payload).catch(() => {
                         </code>
                         로 병렬 조회해 로딩 시간을 최소화했습니다.
                       </p>
+
+                      <div className="mt-4">
+                        <PortfolioImage
+                          src="/projects/nexus/home-dashboard.png"
+                          alt="Nexus 홈 대시보드 — KPI 카드, Inbox, My tasks"
+                          caption="홈 대시보드"
+                          width={1292}
+                          height={813}
+                        />
+                      </div>
 
                       <div className="mt-4">
                         <pre className="overflow-x-auto rounded-xl bg-slate-900 p-4 text-sm text-white">
